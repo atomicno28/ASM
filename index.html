@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASM</title>
+</head>
+<body>
+<form > 
+    <input id="input" type="text" name = "input" placeholder="Type Something"/>
+    <button type="button" onclick="handleclick()"> Add! </button>  
+ </form>
+    <script>
+        var items = [];
+        localStorage.clear();
+function handleclick()
+{
+
+    let content= document.getElementById('input').value;
+
+    if(localStorage.length === 0)
+    {
+        items.push(content);
+        localStorage.setItem('items', JSON.stringify(items));
+    }
+    else
+    {
+    let store = JSON.parse(localStorage.getItem('items'));
+    let ind = store.indexOf(content);
+    if(ind!== -1)
+    {
+        alert("Already Exist");
+    }
+    else
+    {
+        items.push(content);
+        localStorage.setItem('items', JSON.stringify(items));
+    }
+    }
+    
+
+}
+
+    </script>
+</body>
+</html>
